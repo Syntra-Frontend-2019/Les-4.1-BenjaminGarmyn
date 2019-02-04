@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Mee te brengen van de Colruyt</h1>
+
+    <ul id="list">
+
+    </ul>
+
+    <input type="text" id="product">
+    <button onclick="addProducts()">Add</button>
+    <button onclick="deleteProducts()">Remove</button>
+
+    <script>
+        var lijst = document.querySelector("#list");
+        var product = document.querySelector("#product");
+
+        var arrayProducten = [];
+
+
+        function addProducts() {
+            arrayProducten.push(product.value);
+            update();
+        }
+
+        function deleteProducts() {
+
+
+            if (arrayProducten.indexOf(product.value) != -1) {
+                var deletePositie = arrayProducten.indexOf(product.value);
+                arrayProducten.splice(deletePositie, 1);
+
+                update();
+
+            } else {
+                console.log(product.value + " bevind zich niet in de lijst.")
+            }
+        }
+
+        function update() {
+            var listItem = arrayProducten.join("</li><li>")
+            lijst.innerHTML = "<li>" + listItem + "</li>";
+
+            product.value = "";
+        }
+    </script>
+
+</body>
+
+</html>
